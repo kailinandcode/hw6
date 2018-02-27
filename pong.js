@@ -46,6 +46,17 @@ function draw() {
   text(score1, width/4, 50);
   text(score2, 3*width/4, 50);
   
+  if (score1 == 10){
+    text('Player 1 has won', 200, 200);
+    score1 = 0;
+    score2 = 0;
+  }
+  
+  else if (score2 == 10) {
+    text('Player 2 has won', 200, 200);
+    score1 = 0;
+    score2 = 0;
+  }
   //if need reposition of puck
   if (prevScore != 0) {
     puck.x = 200
@@ -97,7 +108,7 @@ function draw() {
   }
   
   // bounce puck on paddles -- player 2 -- based on x-coordinate
-  if (puck.x + puck.r > player2.x - player2.wd) {
+  else if (puck.x + puck.r > player2.x - player2.wd) {
     // check if puck is within paddle height...
     if (puck.y > player2.y && puck.y < player2.y + player2.ht) {
       puck.xSpeed = -abs(puck.xSpeed);
