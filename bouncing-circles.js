@@ -5,8 +5,7 @@ Add a "radius" property to each circle.
 Decrease the radius every time the circle hits a boundary.
 Reset the location & size of each circle when it disappears.
 Add a visual indicator that triggers when a circle hits a boundary.
-**/
-var circles = [];
+**/var circles = [];
 var radi = [];
 var hitBoundary = false;
 
@@ -37,8 +36,9 @@ function draw() {
 
     //indicate hit boundary
     if (hitBoundary == true) {
-      fill(255);
-      ellipse(circle.x, circle.y, radi[index]);
+      fill(random(0, 255), random(0, 255), 100);
+      textSize(30);
+      text('H I T', width/2, height/2);
     }
     // draw it
     else {
