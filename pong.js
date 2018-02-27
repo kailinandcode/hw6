@@ -6,12 +6,11 @@ How do you draw the scores on the board?
 How do you trigger conditions to increase the scores? 
 (And, what happens to the gameplay when someone scores -- perhaps another round?) 
 Hint: there is already a trigger condition in the code, questionably marked, that might be useful for you.
-*/
-var puck = {
+*/var puck = {
   x: 200,
   y: 200,
-  xSpeed: 1,
-  ySpeed: -1,
+  xSpeed: 3,
+  ySpeed: -3,
   r: 15
 };
 var edgeOffset = 20;
@@ -40,7 +39,11 @@ function setup() {
 
 function draw() {
   background(255);
-  
+ 
+  for (i = 0; i < 400; i += 40) {
+    strokeWeight(5);
+    line(200, i, 200, i+30);
+  }
   //print score
   textSize(44);
   text(score1, width/4, 50);
@@ -57,6 +60,7 @@ function draw() {
     score1 = 0;
     score2 = 0;
   }
+  
   //if need reposition of puck
   if (prevScore != 0) {
     puck.x = 200
