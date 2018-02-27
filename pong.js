@@ -7,7 +7,6 @@ How do you trigger conditions to increase the scores?
 (And, what happens to the gameplay when someone scores -- perhaps another round?) 
 Hint: there is already a trigger condition in the code, questionably marked, that might be useful for you.
 */
-
 var puck = {
   x: 200,
   y: 200,
@@ -33,6 +32,7 @@ var player2 = {
 
 var score1 = 0;
 var score2 = 0;
+var prevScore = 0;
 
 function setup() {
   createCanvas(400, 400);
@@ -46,6 +46,11 @@ function draw() {
   text(score1, width/4, 50);
   text(score2, 3*width/4, 50);
   
+  //if need reposition of puck
+  if (prevScore != 0) {
+    puck.x = 200
+    puck.y = 50
+  }
   // draw puck
   ellipse(puck.x, puck.y, puck.r*2);
   
@@ -87,11 +92,7 @@ function draw() {
       puck.xSpeed = abs(puck.xSpeed);
     } else {
       score2 += 1;
-      puck.x = 200;
-      puck.y = 200;
-      puck.xSpeed = 1;
-  	  puck.ySpeed = -1;
-  		puck.r= 15;
+      prevScore += 1;
     }
   }
   
@@ -102,9 +103,12 @@ function draw() {
       puck.xSpeed = -abs(puck.xSpeed);
     } else {
       score1 += 1;
-      puck.x = 200;
-      puck.y = 200;
+      prevScore += 1;
     }
+  }
+  
+  else {
+    prevScore = 0;
   }
 }
 
